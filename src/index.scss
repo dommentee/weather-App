@@ -1,0 +1,5 @@
+@import "./util/scss/breakpoints.scss";
+
+body {
+  @include clean-slate;
+}
