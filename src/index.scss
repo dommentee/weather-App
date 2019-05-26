@@ -2,4 +2,104 @@
 
 body {
   @include clean-slate;
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+  font-family: 'Work Sans', sans-serif;
+}
+
+.main {
+  display: grid;
+  height: 90vh;
+  width: 90vw;
+  margin: 5vh auto;
+  grid-template-columns: auto;
+  grid-template-rows: .1fr .35fr .35fr .2fr;
+  grid-template-areas: 
+    "s s s s"
+    "t t w w"
+    "v v v v"
+    "d d d d"
+  ;
+}
+
+.seatch-box {
+  grid-area: s;
+  width: 60%;
+  align-self: center;
+  justify-self: center;
+  background-color: pink;
+  input {
+    width: 100%;
+    padding: 10px 20px;
+    border-style: none;
+    outline: none;
+ 
+
+    
+  }
+}
+.temp-degree {
+  grid-area: t;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  justify-content: space-around;
+
+  .temperature {
+    font-size: 4em;
+    display: flex;
+    align-items: center;
+    span {
+
+      font-size: .5em;
+    }
+  }
+  
+}
+.description {
+  grid-area: w;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  justify-content: space-around;
+  font-size: 2em;
+
+}
+.weather-svg {
+  grid-area: v;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  justify-content: space-around;
+}
+.dates {
+  grid-area: d;
+  background-color: pink;
+}
+
+
+//breakpoints
+@include media-breakpoint-down(lg) {
+  .main {
+    background-color: green;
+  }
+}
+@include media-breakpoint-down(md) {
+  .main {
+    background-color: $cyan;
+  }
+
+}
+
+@include media-breakpoint-down(sm) {
+  .main {
+    background-color: $danger;
+  }
+
+}
+
+@include media-breakpoint-down(xs) {
+  .main {
+    background-color: $dark;
+  }
+
 }

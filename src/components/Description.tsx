@@ -3,8 +3,8 @@ import * as React from 'react';
 class Description extends React.Component<{}, {}> {
   render() {
     return (
-      <div>
-        Weather Description
+      <div className="description">
+        Its cold as fudge
       </div>
     )
   }
