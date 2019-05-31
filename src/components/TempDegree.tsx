@@ -1,12 +1,15 @@
 import * as React from 'react';
 
-class TempDegree extends React.Component<{}> {
+interface IProps {
+  temperature: number | string
+}
+class TempDegree extends React.Component<IProps> {
 
   render() {
     return (
       <div className="temp-degree">
         <div className="temperature">
-          65
+          {this.props.temperature}
           <span>F</span>
         </div>
       </div>

@@ -8,48 +8,52 @@ import TempDegree from './components/TempDegree';
 import Description from './components/Description';
 import Weathersvg from './components/Weathersvg';
 import DatePicker from './components/DatePicker';
+import { getCityFromLatLong, CityData, getWeatherData, WeatherData } from './util/apiHelpers';
+import { any } from 'prop-types';
 
-interface Isatate {
-
+interface IState {//types
+  coords: GeolocatedProps['coords'];
+  userLocation: CityData | null,
+  weatherData: WeatherData | null //weatherData pulls from Weather data pull of data
 }
 
-interface IProps extends GeolocatedProps {
-
+interface IProps extends GeolocatedProps { 
+  
 }
 
-class App extends React.Component<IProps, Isatate> {
+class App extends React.Component<IProps, IState> {
 
-  constructor(props: IProps) {
+  constructor(props: IProps) {//types
     super(props)
+    this.state = {
+      coords: undefined,
+      userLocation: null,
+      weatherData: null
+    }
   }
+  componentWillReceiveProps(currentProps: IProps, newProps: IProps) {// component will recive new props
+    if (!currentProps.coords) return;//if current coords do not = coords return
+    this.setState({ coords: currentProps.coords });//set the cords to the current coords
+    const lat = currentProps.coords.latitude
+    const long = currentProps.coords.longitude
 
-  componentDidMount() {
-    if (!this.props.coords) return;
-    const lat = this.props.coords!.latitude
-    const long = this.props.coords!.longitude//!coords = if cords isnt avaliable
-    const geoLocate =`http://api.geonames.org/findNearestAddressJSON?lat=${lat}&lng=${long}&username=dom_m`;
-      const proxy = `https://cors-anywhere.herokuapp.com/`;//cross-orogin location from anywhere
-      const api = `${proxy}https://api.darksky.net/forecast/e6daff41a677622a1915b60f7beb5429/${lat},${long}`;//usses proxy to pull info from API from any location
-      fetch(geoLocate)
-        .then(async (response) => {
-          const data = await response.json();
-          console.log(data);
-          //locationTimeZone.innerHTML = data.address.placename;
+    getCityFromLatLong(lat, long).then(data => {//uses log lat to pull to location from api
+      if(data)this.setState({userLocation: data})
+    })
 
-        })
-      fetch(api)//pulls info from the API
-        .then(async (response) => {//json() method of body mixin
-          this.setState({weatherData: await response.json()});//takes pulled data and returns as json
-        })
+    getWeatherData(lat, long).then(data => {
+      if(data)this.setState({weatherData: data})
+    })
   }
    
   render() {
-    if(!this.props.coords) return <div>allow location</div>
+    if (!this.props.coords) return <div>allow location</div>
+    if (!this.state.weatherData) return <div>weather Loading</div>
     console.log(this.state)
     return (
       <div className="main">
         <SearchForm />
-        <TempDegree />
+        <TempDegree temperature={this.state.weatherData.currently.temperature}/>
         <Description />
         <Weathersvg />
         <DatePicker/>
