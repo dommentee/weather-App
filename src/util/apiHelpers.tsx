@@ -25,7 +25,7 @@ export interface WeatherData {//outlines data
     precipProbability: number
     precipType: string
     pressure: number
-    summary: number
+    summary: string
     temperature: number
     time: number
     uvIndex: number

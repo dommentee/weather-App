@@ -1,10 +1,14 @@
 import * as React from 'react';
 
-class Description extends React.Component<{}, {}> {
+interface IProps {
+  summary: string 
+}
+
+class Description extends React.Component<IProps> {
   render() {
     return (
       <div className="description">
-        Its cold as fudge
+        {this.props.summary}
       </div>
     )
   }

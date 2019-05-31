@@ -54,7 +54,7 @@ class App extends React.Component<IProps, IState> {
       <div className="main">
         <SearchForm />
         <TempDegree temperature={this.state.weatherData.currently.temperature}/>
-        <Description />
+        <Description summary={this.state.weatherData.currently.summary}/>
         <Weathersvg />
         <DatePicker/>
       </div>
