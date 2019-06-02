@@ -47,12 +47,15 @@ class App extends React.Component<IProps, IState> {
   }
    
   render() {
-    if (!this.props.coords) return <div>allow location</div>
-    if (!this.state.weatherData) return <div>weather Loading</div>
+    if (!this.props.coords) return <div>Finding location</div>
+    if (!this.state.weatherData || !this.state.userLocation) return <div>...Loading</div>
     console.log(this.state)
     return (
       <div className="main">
-        <SearchForm />
+        <SearchForm
+          city={this.state.userLocation.city} 
+          state_code={this.state.userLocation.state_code}
+        />
         <TempDegree temperature={this.state.weatherData.currently.temperature}/>
         <Description summary={this.state.weatherData.currently.summary}/>
         <Weathersvg />

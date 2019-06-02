@@ -1,12 +1,17 @@
 import * as React from 'react'
 
-class SearchForm extends React.Component<{}> {
+interface IProps {
+  city: string,
+  state_code: string
+}
+
+class SearchForm extends React.Component<IProps> {
 
   render() {
     return (
       <div className="seatch-box">
         <form>
-          <input type="text" name="city" placeholder="Search for a place..."/>
+          <input type="text" name="city" placeholder={`${this.props.city},${this.props.state_code}`}/>
         </form>
       </div>
     )
