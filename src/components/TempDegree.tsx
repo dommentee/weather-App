@@ -10,7 +10,7 @@ class TempDegree extends React.Component<IProps> {
       <div className="temp-degree">
         <div className="temperature">
           {this.props.temperature}
-          <span>F</span>
+          <span>°</span>
         </div>
       </div>
     )

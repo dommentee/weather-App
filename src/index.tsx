@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import SearchForm from './components/SearchForm';
 import TempDegree from './components/TempDegree';
 import Description from './components/Description';
-import Weathersvg from './components/Weathersvg';
+import Weathersvg,{WeatherIconType,getIconTypeFromApi} from './components/Weathersvg';
 import DatePicker from './components/DatePicker';
 import { getCityFromLatLong, CityData, getWeatherData, WeatherData } from './util/apiHelpers';
 import { any } from 'prop-types';
@@ -55,10 +55,20 @@ class App extends React.Component<IProps, IState> {
         <SearchForm
           city={this.state.userLocation.city} 
           state_code={this.state.userLocation.state_code}
+          town={this.state.userLocation.town}
         />
         <TempDegree temperature={this.state.weatherData.currently.temperature}/>
-        <Description summary={this.state.weatherData.currently.summary}/>
-        <Weathersvg />
+        <Description
+          summary={this.state.weatherData.currently.summary}
+          precipProbability={this.state.weatherData.currently.precipProbability}
+          windSpeed={this.state.weatherData.currently.windSpeed}
+        />
+        <Weathersvg
+          icon={getIconTypeFromApi(this.state.weatherData.currently.icon)}
+          animate={true}
+          size={190}
+          color={'white'}
+        />
         <DatePicker/>
       </div>
     )

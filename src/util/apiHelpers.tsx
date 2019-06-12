@@ -1,5 +1,4 @@
 import { resolve } from "dns";
-
 export interface CityData {//outline of data when pulled from api
   city: string
   continent: string
@@ -11,6 +10,7 @@ export interface CityData {//outline of data when pulled from api
   road_type: string
   state: string
   state_code: string
+  town: string
 }
 
 export interface WeatherData {//outlines data
@@ -35,6 +35,8 @@ export interface WeatherData {//outlines data
     windSpeed: number
   }
 }
+
+
 
 interface LatLongData {
   components: CityData//why

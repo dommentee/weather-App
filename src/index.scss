@@ -2,7 +2,7 @@
 
 body {
   @include clean-slate;
-  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+  background-image: linear-gradient(to top, #209cff 0%, #68e0cf 100%);
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -26,15 +26,15 @@ body {
   width: 60%;
   align-self: center;
   justify-self: center;
-  background-color: pink;
+
   input {
     width: 100%;
     padding: 10px 20px;
     border-style: none;
     outline: none;
- 
+    font-size: 1.3em; 
+    border-radius: 5px;
 
-    
   }
 }
 .temp-degree {
@@ -48,9 +48,9 @@ body {
     font-size: 4em;
     display: flex;
     align-items: center;
+    color: #fff;
     span {
-
-      font-size: .5em;
+      font-size: 1em;
     }
   }
   
@@ -61,8 +61,15 @@ body {
   align-items: center;
   justify-content: space-evenly;
   justify-content: space-around;
-  font-size: 2em;
+  font-size: 1.8em;
+  color: #fff;
+  ul {
+    list-style-type: none;
+    span {
+      font-size: .7em;
+    }
 
+  }
 }
 .weather-svg {
   grid-area: v;
