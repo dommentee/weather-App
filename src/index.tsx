@@ -28,7 +28,8 @@ class App extends React.Component<IProps, IState> {
     this.state = {
       coords: undefined,
       userLocation: null,
-      weatherData: null
+      weatherData: null,
+  
     }
   }
   componentWillReceiveProps(currentProps: IProps, newProps: IProps) {// component will recive new props
@@ -65,11 +66,16 @@ class App extends React.Component<IProps, IState> {
         />
         <Weathersvg
           icon={getIconTypeFromApi(this.state.weatherData.currently.icon)}
-          animate={true}
           size={190}
           color={'white'}
+          animate={true}
         />
-        <DatePicker/>
+        <DatePicker
+          icon={getIconTypeFromApi(this.state.weatherData.currently.icon)}
+          temperature={this.state.weatherData.currently.temperature}
+          time={this.state.weatherData.currently.time}
+          animate={false}
+        />
       </div>
     )
   }
