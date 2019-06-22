@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Weathersvg, { WeatherIconType } from './Weathersvg';
-import { array } from 'prop-types';
+import Weathersvg, { WeatherIconType, getIconTypeFromApi } from './Weathersvg';
+import { DataCard } from './DataCard';
 
 
 
@@ -9,34 +9,23 @@ interface IProps {
   icon: WeatherIconType
   time: number 
   animate: boolean
+  data: any 
 }
  
 class DatePicker extends React.Component<IProps> {
-  
-  render() { 
-    const findDay = new Date();
-    const dayOfWeek = [
-      'Sun','Mon','Tue','Wed','Thu','Fri','Sat',
-    ] 
-    const findDayOfWeek = dayOfWeek[findDay.getDay()];
-    console.log(findDayOfWeek);
-
+  render() {  
     return (
-      <div className="dates">
-        <div className="day">
-          <span>{findDayOfWeek}</span>
-          <div className="icon">
-            <Weathersvg
-              icon={this.props.icon}
-              size={40}
-              color={'white'}  
-              animate={false}
+      <div className="dates-wrap">
+        <div className="days">
+          {this.props.data.map((dayData: any) => (
+            <DataCard
+              icon={getIconTypeFromApi(dayData.icon)}
+              temperatureMax={dayData.temperatureMax}
+              time={dayData.time}
+              key={dayData.time}
             />
-          </div>
-          <div>
-            {this.props.temperature}
-          </div>
-        </div>
+          ))}         
+        </div> 
       </div>
     )
   }

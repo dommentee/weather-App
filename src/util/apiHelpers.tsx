@@ -1,4 +1,3 @@
-import { resolve } from "dns";
 export interface CityData {//outline of data when pulled from api
   city: string
   continent: string
@@ -33,6 +32,14 @@ export interface WeatherData {//outlines data
     windBearing: number
     windGust: number
     windSpeed: number
+  }
+
+  daily: {
+    data: {
+      icon: string
+      temperatureMax: number
+      time: number
+    }[]
   }
 }
 

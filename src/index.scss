@@ -9,6 +9,7 @@ body {
   display: grid;
   height: 90vh;
   width: 70vw;
+  border-radius: 5px;
   margin: 5vh auto;
   grid-template-columns: auto;
   grid-template-rows: .1fr .35fr .35fr .2fr;
@@ -75,19 +76,42 @@ body {
   justify-content: space-evenly;
   justify-content: space-around;
 }
-.dates {
+.dates-wrap{
   grid-area: d;
-  overflow: scroll;
-  background-color: pink;
+  position: relative;
+  display: inline;
+  color: #fff;
+  padding: 5px;
   border-radius: 5px;
-
+  background-color: #fff;
+  .days {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
   .day {
     width: 20%;
+    display: inline-block;
     padding: 5px;
-    background-color: yellowgreen;
+    vertical-align:top;
+    white-space:nowrap;
+    background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
+    background-blend-mode: screen;
     text-align: center;
-
+    span {
+      font-size: .8em;
+      font-weight: bold;
+    }
+    .icon {
+      padding: 10px 0;
+    }
+    .the-temp {
+      padding: 5px 0;
+    }
   }
+}
+.day:nth-child(even) {
+  background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
 }
 //breakpoints
 @include media-breakpoint-down(lg) {

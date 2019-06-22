@@ -9,7 +9,6 @@ import Description from './components/Description';
 import Weathersvg,{WeatherIconType,getIconTypeFromApi} from './components/Weathersvg';
 import DatePicker from './components/DatePicker';
 import { getCityFromLatLong, CityData, getWeatherData, WeatherData } from './util/apiHelpers';
-import { any } from 'prop-types';
 
 interface IState {//types
   coords: GeolocatedProps['coords'];
@@ -51,6 +50,7 @@ class App extends React.Component<IProps, IState> {
     if (!this.props.coords) return <div>Finding location</div>
     if (!this.state.weatherData || !this.state.userLocation) return <div>...Loading</div>
     console.log(this.state)
+    console.log(this.state.weatherData.daily.data)
     return (
       <div className="main">
         <SearchForm
@@ -75,6 +75,8 @@ class App extends React.Component<IProps, IState> {
           temperature={this.state.weatherData.currently.temperature}
           time={this.state.weatherData.currently.time}
           animate={false}
+          data={this.state.weatherData.daily.data}
+
         />
       </div>
     )
