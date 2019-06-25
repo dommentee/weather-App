@@ -43,17 +43,17 @@ export interface WeatherData {//outlines data
   }
 }
 
-
-
 interface LatLongData {
   components: CityData//why
   lat: number,
   long: number,
 }
 
+const apiKey = '54a057823d6f4b29bd528ba975b4b997'
+
 export function getCityFromLatLong(lat: number, long: number): Promise<CityData | null> {//function to find current location
   return new Promise((resolve, reject) => {
-    const geolocate = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${long}&key=54a057823d6f4b29bd528ba975b4b997`;
+    const geolocate = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${long}&key=${apiKey}`;
     fetch(geolocate) 
       .then(response => response.json())
       .then(data => resolve(data.results[0].components))//.components?
@@ -62,7 +62,7 @@ export function getCityFromLatLong(lat: number, long: number): Promise<CityData 
 
 export function getLatLongFromCity(cityName: string): Promise<LatLongData[] | null> {// function to turn coords in to city 
   return new Promise((resolve, reject) => {
-    const geolocate = `https://api.opencagedata.com/geocode/v1/json?q=${cityName}&key=54a057823d6f4b29bd528ba975b4b997`;
+    const geolocate = `https://api.opencagedata.com/geocode/v1/json?q=${cityName}&key=${apiKey}`;
     fetch(geolocate)
       .then(response => response.json())
       .then(data => resolve(data.results));

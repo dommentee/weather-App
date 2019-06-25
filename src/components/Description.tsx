@@ -12,7 +12,7 @@ class Description extends React.Component<IProps> {
       <div className="description">
         <ul>
           <li>{this.props.summary}</li>
-          <li><span>Chance of rain</span>: {this.props.precipProbability}</li>
+          <li><span>PRECIP</span>: {this.props.precipProbability}%</li>
           <li><span>Windspeed</span>: {this.props.windSpeed}</li>
         </ul>
       </div>

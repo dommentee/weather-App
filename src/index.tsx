@@ -13,7 +13,7 @@ import { getCityFromLatLong, CityData, getWeatherData, WeatherData } from './uti
 interface IState {//types
   coords: GeolocatedProps['coords'];
   userLocation: CityData | null,
-  weatherData: WeatherData | null //weatherData pulls from Weather data pull of data
+  weatherData: WeatherData | null //weatherData pulls from Weather data in api
 }
 
 interface IProps extends GeolocatedProps { 
@@ -47,13 +47,14 @@ class App extends React.Component<IProps, IState> {
   }
    
   render() {
-    if (!this.props.coords) return <div>Finding location</div>
-    if (!this.state.weatherData || !this.state.userLocation) return <div>...Loading</div>
+    if (!this.props.coords) return <div className="pre-loader-wrap"><div id="preloader"></div></div>
+    if (!this.state.weatherData || !this.state.userLocation) return <div className="pre-loader-wrap"><div id="preloader"></div></div>
     console.log(this.state)
     console.log(this.state.weatherData.daily.data)
     return (
       <div className="main">
         <SearchForm
+          
           city={this.state.userLocation.city} 
           state_code={this.state.userLocation.state_code}
           town={this.state.userLocation.town}
