@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { GeolocatedProps, geolocated } from 'react-geolocated';
 import './index.scss';
-import registerServiceWorker from './registerServiceWorker';
 import SearchForm from './components/SearchForm';
 import TempDegree from './components/TempDegree';
 import Description from './components/Description';
@@ -54,7 +53,6 @@ class App extends React.Component<IProps, IState> {
     return (
       <div className="main">
         <SearchForm
-          
           city={this.state.userLocation.city} 
           state_code={this.state.userLocation.state_code}
           town={this.state.userLocation.town}
@@ -93,5 +91,5 @@ const AppWithGeo = geolocated({// higher order component
 })(App);
 
 ReactDOM.render(<AppWithGeo />, document.getElementById('render-target'));// AppWithGeo becomes main branch
-registerServiceWorker();
+
 

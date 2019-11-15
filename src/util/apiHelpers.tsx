@@ -54,7 +54,7 @@ const apiKey = '54a057823d6f4b29bd528ba975b4b997'
 export function getCityFromLatLong(lat: number, long: number): Promise<CityData | null> {//function to find current location
   return new Promise((resolve, reject) => {
     const geolocate = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${long}&key=${apiKey}`;
-    fetch(geolocate) 
+    fetch(geolocate)
       .then(response => response.json())
       .then(data => resolve(data.results[0].components))//.components?
   })

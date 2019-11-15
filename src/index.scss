@@ -12,12 +12,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  
   #preloader {
     width: 60px;
     height: 60px;
-    margin-left: -24px;
-    margin-top: -24px;
     border: #31a9df 3.5px solid;
     border-left-color: transparent;
     border-radius: 50%;
@@ -53,7 +50,7 @@ body {
   align-self: center;
   justify-self: center;
   input {
-    width: 30%;
+    width: 100%;
     padding: 15px 15px;
     border-style: none;
     outline: none;
